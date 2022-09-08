@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRef } from "react";
 import Swal from "sweetalert2";
-import { apinode } from "@services/api";
+import { usermicroservice } from "@services/api";
 import Cookies from "universal-cookie";
 import { encode, decode } from "js-base64";
 
@@ -22,7 +22,7 @@ const Login: NextPage = () => {
       });
     } else {
       try {
-        const result: any = await apinode.get("/login", {
+        const result: any = await usermicroservice.get("/login", {
           data: {
             email: emailref.current!.value,
             password: passref.current!.value,

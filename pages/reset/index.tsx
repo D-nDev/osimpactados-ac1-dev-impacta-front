@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRef, useState } from "react";
 import Swal from "sweetalert2";
-import { apinode } from "@services/api";
+import { usermicroservice } from "@services/api";
 
 const Reset: NextPage = () => {
   const emailref = useRef<any>();
@@ -45,7 +45,7 @@ const Reset: NextPage = () => {
       setButtonDisabled(false);
     } else {
       try {
-        await apinode.post(
+        await usermicroservice.post(
           "/recover",
           {
             email: emailref.current.value,
