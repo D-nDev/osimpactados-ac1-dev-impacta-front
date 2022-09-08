@@ -4,7 +4,6 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRef, useState } from "react";
 import Swal from "sweetalert2";
-import { awslambda1 } from "@services/api";
 
 const Recover: NextPage = () => {
   const emailref = useRef<any>();
@@ -22,16 +21,14 @@ const Recover: NextPage = () => {
       });
     } else {
       try {
-        const result: any = await awslambda1.post("", {
-          email: emailref.current.value,
-        });
-        Swal.fire({
+        /*Swal.fire({
           title: "Sucesso",
           text: "Código enviado para o e-mail",
           icon: "success",
         }).then(() => {
           window.location.href = "/reset";
-        });
+        });*/
+        window.location.href = "/";
       } catch (error: any) {
         if (error.response.status == 404) {
           Swal.fire({
