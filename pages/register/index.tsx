@@ -13,6 +13,7 @@ const Register: NextPage = () => {
   const emailref = useRef<any>();
   const passref = useRef<any>();
   const confirmpassref = useRef<any>();
+
   const cpfref = useRef<any>();
   const addressref = useRef<any>();
   const addressnumberref = useRef<any>();
