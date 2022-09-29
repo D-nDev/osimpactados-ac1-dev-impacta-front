@@ -24,12 +24,13 @@ const Register: NextPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result: any = await usermicroservice.get("/myuser", { withCredentials: true});
+      const result: any = await fetch(`${process.env.NEXT_PUBLIC_USER_MICROSERVICE}/myuser`, {credentials: 'include'});
+      const resultJson: any = await result.json();
 
-      setPhoto(result.data.photo);
-      setAddress(result.data.addresses);
-      setName(result.data.name);
-      setEmail(result.data.email);
+      setPhoto(resultJson.data.photo);
+      setAddress(resultJson.data.addresses);
+      setName(resultJson.data.name);
+      setEmail(resultJson.data.email);
     }
 
     fetchData();
