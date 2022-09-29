@@ -29,8 +29,8 @@ const customStyles = {
 
 const customStyles2 = {
   content: {
-    width: 'auto',
-    height: 'auto',
+    width: "auto",
+    height: "auto",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -90,7 +90,10 @@ const Login: NextPage = () => {
             },
           }
         );
-        cookies.set("token", result.data.token, { sameSite: 'none', secure: true});
+        cookies.set("token", result.data.token, {
+          sameSite: "none",
+          secure: true,
+        });
         window.location.href = "/";
       } catch (error: any) {
         console.log(error);
@@ -177,7 +180,13 @@ const Login: NextPage = () => {
             style={customStyles2}
             contentLabel="Opções"
           >
-            <div style={{ display: "flex", justifyContent: 'space-around', marginBottom: '20px' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                marginBottom: "20px",
+              }}
+            >
               <h2>Opções</h2>
               <button onClick={closeModal2}>Fechar</button>
             </div>
@@ -189,72 +198,104 @@ const Login: NextPage = () => {
               }}
             >
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/recover'
+                  window.location.href = "/recover";
                 }}
               >
                 Recuperar senha por e-mail
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/resetbyemail'
+                  window.location.href = "/resetbyemail";
                 }}
               >
                 Alterar senha com código de e-mail
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/recoversms'
+                  window.location.href = "/recoversms";
                 }}
               >
                 Recuperar senha por Código SMS
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/resetbysms'
+                  window.location.href = "/resetbysms";
                 }}
               >
                 Alterar senha com código SMS
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/validateuser'
+                  window.location.href = "/validateuser";
                 }}
               >
                 Validar conta
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/resendrecoveremail'
+                  window.location.href = "/resendrecoveremail";
                 }}
               >
                 Re-enviar código de recuperação por e-mail
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/resendrecoversms'
+                  window.location.href = "/resendrecoversms";
                 }}
               >
                 Re-enviar código de recuperação por SMS
               </S.LoginButton>
 
               <S.LoginButton
-                style={{ cursor: "pointer", marginRight: '2%', marginBottom: '4%' }}
+                style={{
+                  cursor: "pointer",
+                  marginRight: "2%",
+                  marginBottom: "4%",
+                }}
                 onClick={() => {
-                  window.location.href = '/resendvalidation'
+                  window.location.href = "/resendvalidation";
                 }}
               >
                 Re-enviar código de Validação de conta
@@ -274,9 +315,13 @@ const Login: NextPage = () => {
           <S.RegisterText>
             Dificuldades ao logar?{" "}
             <Link href="#" passHref>
-              <span onClick={() => {
-                openModal2();
-              }}>Clique aqui</span>
+              <span
+                onClick={() => {
+                  openModal2();
+                }}
+              >
+                Clique aqui
+              </span>
             </Link>
           </S.RegisterText>
         </S.RightSide>
