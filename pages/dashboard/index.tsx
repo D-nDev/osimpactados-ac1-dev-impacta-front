@@ -24,7 +24,7 @@ const Register: NextPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result: any = await fetch(`${process.env.NEXT_PUBLIC_USER_MICROSERVICE}/myuser`, {credentials: 'include'});
+      const result: any = await fetch(`${process.env.NEXT_PUBLIC_USER_MICROSERVICE}/myuser`, {credentials: 'same-origin'});
       const resultJson: any = await result.json();
 
       setPhoto(resultJson.data.photo);
