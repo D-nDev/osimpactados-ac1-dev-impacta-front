@@ -90,7 +90,7 @@ const Login: NextPage = () => {
             },
           }
         );
-        cookies.set("token", result.data.token);
+        cookies.set("token", result.data.token, { sameSite: 'none', secure: true});
         window.location.href = "/";
       } catch (error: any) {
         console.log(error);
