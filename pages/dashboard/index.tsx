@@ -24,7 +24,7 @@ const Register: NextPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result: any = await usermicroservice.get("/myuser");
+      const result: any = await usermicroservice.get("/myuser", { withCredentials: true});
 
       setPhoto(result.data.photo);
       setAddress(result.data.addresses);
