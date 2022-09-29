@@ -104,7 +104,13 @@ const Register: NextPage = () => {
         withCredentials: true,
       });
 
-      setPhoto(result.data.photo);
+      if(result.data.photo) {
+
+        setPhoto(result.data.photo);
+      } else {
+        setPhoto('/static/images/default_photo.png')
+      }
+
       setAddress(result.data.addresses);
       setName(result.data.name);
       setEmail(result.data.email);
