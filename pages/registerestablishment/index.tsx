@@ -83,17 +83,17 @@ const Register: NextPage = () => {
         });
       } catch (error: any) {
         console.log(error);
-        if (error == 400) {
+        console.log(error.response);
+        if (error.response.status == 400) {
           Swal.fire({
             title: "Erro",
-            text: "Conta já existe",
+            text: error.response.data.error,
             icon: "error",
           });
         } else {
-          console.log(error);
           Swal.fire({
             title: "Erro",
-            text: "Ocorreu um erro ao se cadastrar, contate o administrador",
+            text: error.response.data.error,
             icon: "error",
           });
         }

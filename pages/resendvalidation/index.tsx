@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { usermicroservice } from "@services/api";
 
-const Recover: NextPage = () => {
+const ReSendValidation: NextPage = () => {
   const emailref = useRef<any>();
   const recoverbutton = useRef<any>();
   const [buttondisabled, setButtonDisabled] = useState(false);
@@ -22,7 +22,7 @@ const Recover: NextPage = () => {
       });
     } else {
       try {
-        await usermicroservice.post("/requestpass/email", {
+        await usermicroservice.post("/user/resendvalidationemail", {
           email: emailref.current!.value,
         });
         Swal.fire({
@@ -30,7 +30,7 @@ const Recover: NextPage = () => {
           text: "Código enviado para o e-mail",
           icon: "success",
         }).then(() => {
-          window.location.href = "/resetbyemail";
+          window.location.href = "/validateuser";
         });
       } catch (error: any) {
         console.log(error);
@@ -47,7 +47,7 @@ const Recover: NextPage = () => {
             text: error.response.data.error,
             icon: "error",
           });
-         } else {
+        } else {
           Swal.fire({
             title: "Erro",
             text: error.response.data.error,
@@ -62,13 +62,13 @@ const Recover: NextPage = () => {
   return (
     <>
       <Head>
-        <title>FoodOnClick | Recuperar senha</title>
+        <title>FoodOnClick | Re-Enviar Código de validação</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <S.Main>
         <S.LeftSide></S.LeftSide>
         <S.RightSide>
-          <h1>FoodOnClick - Recuperar senha</h1>
+          <h1 style={{ fontSize: "13px" }}>FoodOnClick - Re-Enviar Código de validação</h1>
           <S.MainLabel>Seu E-mail</S.MainLabel>
           <S.Input1 type="email" placeholder="Seu e-mail" ref={emailref} />
 
@@ -89,4 +89,4 @@ const Recover: NextPage = () => {
   );
 };
 
-export default Recover;
+export default ReSendValidation;

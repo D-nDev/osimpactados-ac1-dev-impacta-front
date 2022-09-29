@@ -224,7 +224,7 @@ const Chat: NextPage = () => {
                         text: "Token inválido!",
                         icon: "error",
                       }).then(() => {
-                        router.push("/login");
+                        router.push("/loginuser");
                       });
                     }
 

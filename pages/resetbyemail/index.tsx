@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { usermicroservice } from "@services/api";
 
-const Reset: NextPage = () => {
+const ResetByEmail: NextPage = () => {
   const emailref = useRef<any>();
   const tokenref = useRef<any>();
   const passref = useRef<any>();
@@ -46,12 +46,11 @@ const Reset: NextPage = () => {
     } else {
       try {
         await usermicroservice.post(
-          "/recover",
+          "/changepass/email",
           {
             email: emailref.current.value,
-            usertoken: tokenref.current.value,
-            newpass: passref.current.value,
-            confirmnewpass: pass2ref.current.value,
+            token: tokenref.current.value,
+            password: passref.current.value,
           },
           { withCredentials: true }
         );
@@ -60,20 +59,21 @@ const Reset: NextPage = () => {
           text: "Senha alterada com sucesso",
           icon: "success",
         }).then(() => {
-          window.location.href = "/login";
+          window.location.href = "/loginuser";
         });
       } catch (error: any) {
+        console.log(error);
         console.log(error.response);
         if (error.response.status == 400) {
           Swal.fire({
             title: "Erro",
-            text: "Token expirado",
+            text: error.response.data.error,
             icon: "error",
           });
         } else if (error.response.status == 404) {
           Swal.fire({
             title: "Erro",
-            text: "Token/E-mail não encontrado",
+            text: error.response.data.error,
             icon: "error",
           });
         } else if (error.response.status == 409) {
@@ -91,7 +91,7 @@ const Reset: NextPage = () => {
         } else {
           Swal.fire({
             title: "Erro",
-            text: "Ocorreu um erro ao mudar a senha, contate o administrador",
+            text: error.response.data.error,
             icon: "error",
           });
         }
@@ -147,4 +147,4 @@ const Reset: NextPage = () => {
   );
 };
 
-export default Reset;
+export default ResetByEmail;

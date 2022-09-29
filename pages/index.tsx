@@ -22,13 +22,13 @@ import AppHeaderLogged from "@components/AppHeaderLogged";
 
 const Index: NextPage = () => {
   const cookies = new Cookies();
-  const islogged = cookies.get("auth");
+  const islogged = cookies.get("token");
   const [mobilemenu, setMobileMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showarrow, setShowArrow] = useState(false);
 
   const onResize = () => {
-    if (window.innerWidth <= 1200) {
+    if (window.innerWidth <= 1366) {
       setMobileMenu(true);
     } else {
       setMobileMenu(false);
@@ -70,7 +70,7 @@ const Index: NextPage = () => {
                 <>
                   <span
                     onClick={() => {
-                      cookies.remove("auth");
+                      cookies.remove("token");
                       window.location.href = "/";
                     }}
                     style={{cursor: 'pointer', display: 'inline-block', marginBottom: '1vh'}}
@@ -81,7 +81,7 @@ const Index: NextPage = () => {
               ) : (
                 <>
                   <div style={{marginBottom: "8px"}}>
-                    <Link href="/login" passHref>
+                    <Link href="/loginuser" passHref>
                       <a>Login</a>
                     </Link>
                   </div>
@@ -113,7 +113,7 @@ const Index: NextPage = () => {
         ) : islogged ? (
           <AppHeaderLogged
             logout={() => {
-              cookies.remove("auth");
+              cookies.remove("token");
               window.location.href = "/";
             }}
           />

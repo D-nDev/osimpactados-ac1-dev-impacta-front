@@ -6,8 +6,9 @@ import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { usermicroservice } from "@services/api";
 
-const Recover: NextPage = () => {
+const Validate: NextPage = () => {
   const emailref = useRef<any>();
+  const coderef = useRef<any>();
   const recoverbutton = useRef<any>();
   const [buttondisabled, setButtonDisabled] = useState(false);
 
@@ -22,15 +23,16 @@ const Recover: NextPage = () => {
       });
     } else {
       try {
-        await usermicroservice.post("/requestpass/email", {
+        await usermicroservice.post("/validateuser", {
           email: emailref.current!.value,
+          token: coderef.current!.value,
         });
         Swal.fire({
           title: "Sucesso",
-          text: "Código enviado para o e-mail",
+          text: "Conta ativada com sucesso",
           icon: "success",
         }).then(() => {
-          window.location.href = "/resetbyemail";
+          window.location.href = "/loginuser";
         });
       } catch (error: any) {
         console.log(error);
@@ -41,13 +43,7 @@ const Recover: NextPage = () => {
             text: error.response.data.error,
             icon: "error",
           });
-        } else if (error.response.status == 400) {
-          Swal.fire({
-            title: "Erro",
-            text: error.response.data.error,
-            icon: "error",
-          });
-         } else {
+        } else {
           Swal.fire({
             title: "Erro",
             text: error.response.data.error,
@@ -68,9 +64,12 @@ const Recover: NextPage = () => {
       <S.Main>
         <S.LeftSide></S.LeftSide>
         <S.RightSide>
-          <h1>FoodOnClick - Recuperar senha</h1>
+          <h1>FoodOnClick - Validar conta</h1>
           <S.MainLabel>Seu E-mail</S.MainLabel>
           <S.Input1 type="email" placeholder="Seu e-mail" ref={emailref} />
+
+          <S.MainLabel>Seu Código</S.MainLabel>
+          <S.Input1 type="text" placeholder="Seu código" ref={coderef} />
 
           <Link href="#" passHref>
             <S.RecoverButton
@@ -89,4 +88,4 @@ const Recover: NextPage = () => {
   );
 };
 
-export default Recover;
+export default Validate;

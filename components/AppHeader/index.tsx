@@ -6,14 +6,16 @@ function AppHeader() {
   return (
     <S.AppHeaderWrap>
       <S.Logo>FoodOnClick</S.Logo>
-      <S.AppHeader>
-        <p>Contato Comercial</p>
-        <p>Suporte</p>
-      </S.AppHeader>
       <div style={{ marginTop: "1vh" }}>
-        <Link href="/login" passHref>
-          <S.LoginButton>Login</S.LoginButton>
+        <Link href="/loginuser" passHref>
+          <S.LoginButton>Login Usuário</S.LoginButton>
         </Link>
+
+        <span style={{ marginLeft: "3vh" }}>
+        <Link href="/loginestablishment" passHref>
+          <S.LoginButton>Login Estabelecimento</S.LoginButton>
+        </Link>
+        </span>
 
         <span style={{ marginLeft: "3vh" }}>
           <Link href="/register" passHref>

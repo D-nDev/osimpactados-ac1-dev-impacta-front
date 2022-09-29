@@ -3,8 +3,8 @@ import type { NextRequest } from "next/server";
 import { Base64 } from "js-base64";
 
 export function middleware(req: NextRequest) {
-  const token = req.cookies.get("auth");
-  if (!req.cookies.get("auth") || req.cookies.get("auth") == "") {
+  const token = req.cookies.get("token");
+  if (!req.cookies.get("token") || req.cookies.get("token") == "") {
     return NextResponse.redirect(new URL('/', req.url))
   } else {
     try {
@@ -19,5 +19,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/chat/:path*'],
+  matcher: ['/dashboard'],
 }

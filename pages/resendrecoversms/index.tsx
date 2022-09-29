@@ -6,15 +6,15 @@ import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import { usermicroservice } from "@services/api";
 
-const Recover: NextPage = () => {
-  const emailref = useRef<any>();
+const ReSendRecoverSMS: NextPage = () => {
+  const numberref = useRef<any>();
   const recoverbutton = useRef<any>();
   const [buttondisabled, setButtonDisabled] = useState(false);
 
   const handleRecover = async () => {
     setButtonDisabled(true);
 
-    if (!emailref.current!.value) {
+    if (!numberref.current!.value) {
       Swal.fire({
         title: "Erro",
         text: "Preencha todos os campos!",
@@ -22,15 +22,15 @@ const Recover: NextPage = () => {
       });
     } else {
       try {
-        await usermicroservice.post("/requestpass/email", {
-          email: emailref.current!.value,
+        await usermicroservice.post("/user/resendrecoversms", {
+          mobileNumber: `+55${numberref.current!.value}`,
         });
         Swal.fire({
           title: "Sucesso",
-          text: "Código enviado para o e-mail",
+          text: "Código enviado para o Número",
           icon: "success",
         }).then(() => {
-          window.location.href = "/resetbyemail";
+          window.location.href = "/resetbysms";
         });
       } catch (error: any) {
         console.log(error);
@@ -47,7 +47,7 @@ const Recover: NextPage = () => {
             text: error.response.data.error,
             icon: "error",
           });
-         } else {
+        } else {
           Swal.fire({
             title: "Erro",
             text: error.response.data.error,
@@ -62,15 +62,15 @@ const Recover: NextPage = () => {
   return (
     <>
       <Head>
-        <title>FoodOnClick | Recuperar senha</title>
+        <title>FoodOnClick | Re-Enviar Código de Recuperação de senha</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <S.Main>
         <S.LeftSide></S.LeftSide>
         <S.RightSide>
-          <h1>FoodOnClick - Recuperar senha</h1>
-          <S.MainLabel>Seu E-mail</S.MainLabel>
-          <S.Input1 type="email" placeholder="Seu e-mail" ref={emailref} />
+          <h1 style={{ fontSize: "13px" }}>FoodOnClick - Re-Enviar Código de Recuperação de senha</h1>
+          <S.MainLabel>Seu Telefone com DDD</S.MainLabel>
+          <S.Input1 type="text" placeholder="Seu Telefone com DDD" ref={numberref} />
 
           <Link href="#" passHref>
             <S.RecoverButton
@@ -80,7 +80,7 @@ const Recover: NextPage = () => {
               }}
               disabled={buttondisabled}
             >
-              Enviar e-mail
+              Enviar Código
             </S.RecoverButton>
           </Link>
         </S.RightSide>
@@ -89,4 +89,4 @@ const Recover: NextPage = () => {
   );
 };
 
-export default Recover;
+export default ReSendRecoverSMS;

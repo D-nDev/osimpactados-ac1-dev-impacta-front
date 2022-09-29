@@ -8,8 +8,8 @@ function Description1() {
     <S.Description1Wrapper>
       <span>
         <h1>
-          Seus amigos na <br />
-          palma da sua mão
+          Comida com preço <br />
+          justo para todos
         </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus vero
