@@ -109,7 +109,6 @@ export const ProductCard = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            flexWrap: "wrap",
           }}
         >
           <Grid item md={6} xs={12}>
@@ -126,7 +125,7 @@ export const ProductCard = ({
           </Grid>
           <Button
             style={{ marginLeft: "30px" }}
-            color="primary"
+            color="secondary"
             variant="contained"
             onClick={() => {
               handlePurchase(product, quantityRef.current!.value);

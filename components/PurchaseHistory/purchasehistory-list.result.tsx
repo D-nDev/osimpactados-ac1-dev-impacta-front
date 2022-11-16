@@ -42,10 +42,10 @@ export const PurchaseHistoryResults = ({ purchases, ...rest }: {purchases: any})
               </TableRow>
             </TableHead>
             <TableBody>
-              {purchases && purchases.map((purchase: any) => (
+              {purchases && purchases.map((purchase: any, i: any) => (
                 <TableRow
                   hover
-                  key={purchase.id}
+                  key={purchase.meli_purchaseId}
                 >
                   <TableCell>
                     <Box

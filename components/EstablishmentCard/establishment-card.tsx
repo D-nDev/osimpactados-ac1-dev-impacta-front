@@ -27,11 +27,15 @@ export const EstablishmentCard = ({
       {...rest}
     >
       <CardContent
+        style={{ cursor: "pointer" }}
         onClick={() => {
-          router.push({
-            pathname: `/establishment/${establishment.id}/subsidiary`,
-            query: { establishmentname: establishment.name },
-          }, `/establishment/${establishment.id}/subsidiary`);
+          router.push(
+            {
+              pathname: `/establishment/${establishment.id}/subsidiary`,
+              query: { establishmentname: establishment.name },
+            },
+            `/establishment/${establishment.id}/subsidiary`
+          );
         }}
       >
         <Box

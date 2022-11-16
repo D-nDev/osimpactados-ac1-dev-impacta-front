@@ -1,10 +1,9 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
 import { Box, Button, ListItem } from '@mui/material';
 
-export const NavItem = (props) => {
-  const { href, icon, title, ...others } = props;
+export const NavItem = (props: any) => {
+  const { href, icon, title, ...others }: any = props;
   const router = useRouter();
   const active = href ? (router.pathname === href) : false;
 
@@ -28,10 +27,10 @@ export const NavItem = (props) => {
           startIcon={icon}
           disableRipple
           sx={{
-            backgroundColor: active && 'rgba(255,255,255, 0.08)',
+            backgroundColor: active && 'rgba(255,255,255, 0.08)' as any,
             borderRadius: 1,
             color: active ? 'secondary.main' : 'neutral.300',
-            fontWeight: active && 'fontWeightBold',
+            fontWeight: active && 'fontWeightBold' as any,
             justifyContent: 'flex-start',
             px: 3,
             textAlign: 'left',
@@ -52,10 +51,4 @@ export const NavItem = (props) => {
       </NextLink>
     </ListItem>
   );
-};
-
-NavItem.propTypes = {
-  href: PropTypes.string,
-  icon: PropTypes.node,
-  title: PropTypes.string
 };

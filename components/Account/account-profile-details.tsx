@@ -10,12 +10,11 @@ import {
   TextField,
 } from "@mui/material";
 import { UserContext } from "contexts/UserContext";
-import { v4 as uuidv4 } from 'uuid';
 
-export const AccountProfileDetails = (props) => {
-  const userContext = useContext(UserContext);
+export const AccountProfileDetails = (props: any) => {
+  const userContext = useContext<any>(UserContext);
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
@@ -24,7 +23,6 @@ export const AccountProfileDetails = (props) => {
 
   useEffect(() => {
     setValues({ ...userContext.user });
-    console.log("akiii", userContext);
   }, [userContext]);
 
   const [values, setValues] = useState({

@@ -57,7 +57,6 @@ const Page = () => {
                       />
                     </Grid>
                   ))}
-                {console.log(establishmentid)}
               </Grid>
             </Box>
             <Box

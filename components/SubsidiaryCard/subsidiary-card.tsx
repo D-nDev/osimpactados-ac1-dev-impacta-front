@@ -16,8 +16,8 @@ export const SubsidiaryCard = ({
   ...rest
 }: {
   subsidiary: any;
-  establishmentName: any,
-  establishmentId: any,
+  establishmentName: any;
+  establishmentId: any;
 }) => {
   const router = useRouter();
 
@@ -30,12 +30,21 @@ export const SubsidiaryCard = ({
       }}
       {...rest}
     >
-      <CardContent onClick={() => {
-        router.push({
-          pathname: `/establishment/${establishmentId}/subsidiary/${subsidiary.id}/products`,
-          query: { establishmentname: establishmentName, subsidiaryname: subsidiary.name}
-        }, `/establishment/${establishmentId}/subsidiary/${subsidiary.id}/products`)
-      }}>
+      <CardContent
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          router.push(
+            {
+              pathname: `/establishment/${establishmentId}/subsidiary/${subsidiary.id}/products`,
+              query: {
+                establishmentname: establishmentName,
+                subsidiaryname: subsidiary.name,
+              },
+            },
+            `/establishment/${establishmentId}/subsidiary/${subsidiary.id}/products`
+          );
+        }}
+      >
         <Box
           sx={{
             display: "flex",

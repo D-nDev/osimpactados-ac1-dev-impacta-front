@@ -14,6 +14,7 @@ const Page = () => {
   const [products, setProducts] = useState<any>();
 
   const fetchData = useCallback(async () => {
+    if (!router.isReady) return;
     try {
       const result = await establishmentmicroservice.get(
         `/public/products/${subsidiaryid}`
@@ -22,11 +23,12 @@ const Page = () => {
     } catch (error: any) {
       console.log(error);
     }
-  }, [subsidiaryid]);
+  }, [subsidiaryid, router.isReady]);
 
   useEffect(() => {
+    if (!router.isReady) return;
     fetchData();
-  }, [fetchData]);
+  }, [fetchData, router.isReady]);
 
   return (
     <DashboardLayout>
