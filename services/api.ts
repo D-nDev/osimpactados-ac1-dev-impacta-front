@@ -15,3 +15,8 @@ export const establishmentmicroservice = axios.create({
   baseURL: process.env.NEXT_PUBLIC_ESTABLISHMENT_MICROSERVICE as string,
   withCredentials: true,
 })
+
+export const purchasemicroservice = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_PURCHASE_MICROSERVICE as string,
+  withCredentials: true,
+})

@@ -84,7 +84,7 @@ const Register: NextPage = () => {
           text: "Endereço cadastrado",
           icon: "success",
         }).then(() => {
-          window.location.href = "/dashboard";
+          window.location.href = "/account";
         });
       } catch (error: any) {
         console.log(error);

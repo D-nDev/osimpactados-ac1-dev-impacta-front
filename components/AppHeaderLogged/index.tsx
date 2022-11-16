@@ -12,7 +12,7 @@ function AppHeaderLogged({ logout }: HeaderLogged) {
       <S.Logo>FoodOnClick</S.Logo>
       <S.AppHeader>
       <div style={{ marginTop: "1vh" }}>
-        <Link href="/dashboard" passHref>
+        <Link href="/account" passHref>
           <S.LoginButton>Painel</S.LoginButton>
         </Link>
       </div>

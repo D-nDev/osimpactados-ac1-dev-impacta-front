@@ -1,5 +1,5 @@
 {
-  "name": "chat-react-front",
+  "name": "foodonclick-react-front",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,15 @@
     "css:build": "postcss ./styles/tailwind.css -o ./styles/globals.css"
   },
   "dependencies": {
+    "@emotion/cache": "11.10.3",
+    "@emotion/react": "11.10.4",
+    "@emotion/server": "11.10.0",
+    "@emotion/styled": "11.10.4",
+    "@mui/icons-material": "5.10.3",
+    "@mui/lab": "5.0.0-alpha.99",
+    "@mui/material": "5.10.5",
+    "@mui/system": "5.10.5",
+    "@mui/x-date-pickers": "5.0.1",
     "@tsndr/cloudflare-worker-jwt": "^1.1.4",
     "@types/atob": "^2.1.2",
     "@types/react-modal": "^3.13.1",
@@ -20,6 +29,7 @@
     "axios": "^0.24.0",
     "babel-plugin-styled-components": "^1.13.3",
     "babel-preset-next": "^1.4.0",
+    "date-fns": "^2.29.3",
     "js-base64": "^3.7.2",
     "jwt-decode": "^3.1.2",
     "next": "12.2.5",
@@ -28,6 +38,7 @@
     "react-burger-menu": "^3.0.6",
     "react-dom": "17.0.2",
     "react-modal": "^3.15.1",
+    "react-perfect-scrollbar": "^1.5.8",
     "sass": "^1.43.4",
     "socket.io-client": "^4.3.2",
     "styled-components": "^5.3.3",
@@ -36,7 +47,8 @@
     "tailwindcss-css-filters": "^2.1.0",
     "twin.macro": "^2.8.1",
     "universal-cookie": "^4.0.4",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "16.11.6",
